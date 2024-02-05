@@ -32,6 +32,124 @@
 </head>
 
 <body>
+
+
+  <div>
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 300px;
+        max-height: 100px;
+    
+      }
+    
+      .modal-content {
+        display: flex;
+        align-items: center;
+      }
+    
+      .close {
+        color: red;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+    
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+     
+      @media only screen and (max-width: 600px) {
+    .modal {
+      top: 0px;
+    right: 0px;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 5vh;
+
+      
+   
+  }
+   p{
+        font-size: 10px;
+      }
+}
+
+
+
+    </style>
+  
+    
+    <footer>
+    <div id="paymentAlert" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Thank you for your Airtime of <span id="paymentAmount"></span>! <span id="appreciationMessage"></span></p>
+      </div>
+    </div>
+  </footer>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        setInterval(function () {
+          var paymentAlert = document.getElementById('paymentAlert');
+          var paymentAmountSpan = document.getElementById('paymentAmount');
+          var appreciationMessageSpan = document.getElementById('appreciationMessage');
+    
+          var randomAmount = Math.floor(Math.random() * 1000); // Random amount between 0 and 100
+          var randomAppreciationMessage = getRandomAppreciationMessage(); // Random appreciation message
+    
+          paymentAmountSpan.textContent = "N" + randomAmount;
+          appreciationMessageSpan.textContent = randomAppreciationMessage;
+    
+          paymentAlert.style.display = 'block';
+        }, 5000); // Repeat every 3 seconds
+    
+        // Close the modal when clicking on the close button
+        document.querySelector('.close').addEventListener('click', function () {
+          document.getElementById('paymentAlert').style.display = 'none';
+        });
+    
+        function getRandomAppreciationMessage() {
+          var messages = [
+            "I appreciate your support!",
+            "Thanks for being awesome!",
+            "You're the best!",
+            "I am grateful for your contribution!",
+            "Thank you for choosing me on your giveawy!"
+          ];
+          var randomIndex = Math.floor(Math.random() * messages.length);
+          return messages[randomIndex];
+        }
+      });
+    </script>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="hidden" id="wheelPage">
         <span id="wheelNameDisplay">Wheel name</span>
         <span id="landingEntry">Press 'Spin'</span>
@@ -822,106 +940,6 @@ function clearChildren(parent) {
 
 
 
-<div>
-    <style>
-      .modal {
-        display: none;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        max-width: 300px;
-        max-height: 100px;
-    
-      }
-    
-      .modal-content {
-        display: flex;
-        align-items: center;
-      }
-    
-      .close {
-        color: red;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-    
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-     
-      @media only screen and (max-width: 600px) {
-    .modal {
-      top: 0px;
-    right: 0px;
-    padding: 5px;
-    max-width: 100%;
-    max-height: 5vh;
-
-      
-   
-  }
-   p{
-        font-size: 10px;
-      }
-}
-
-
-
-    </style>
-  
-    
-    <footer>
-    <div id="paymentAlert" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Thank you for your Airtime of <span id="paymentAmount"></span>! <span id="appreciationMessage"></span></p>
-      </div>
-    </div>
-  </footer>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        setInterval(function () {
-          var paymentAlert = document.getElementById('paymentAlert');
-          var paymentAmountSpan = document.getElementById('paymentAmount');
-          var appreciationMessageSpan = document.getElementById('appreciationMessage');
-    
-          var randomAmount = Math.floor(Math.random() * 1000); // Random amount between 0 and 100
-          var randomAppreciationMessage = getRandomAppreciationMessage(); // Random appreciation message
-    
-          paymentAmountSpan.textContent = "N" + randomAmount;
-          appreciationMessageSpan.textContent = randomAppreciationMessage;
-    
-          paymentAlert.style.display = 'block';
-        }, 5000); // Repeat every 3 seconds
-    
-        // Close the modal when clicking on the close button
-        document.querySelector('.close').addEventListener('click', function () {
-          document.getElementById('paymentAlert').style.display = 'none';
-        });
-    
-        function getRandomAppreciationMessage() {
-          var messages = [
-            "I appreciate your support!",
-            "Thanks for being awesome!",
-            "You're the best!",
-            "I am grateful for your contribution!",
-            "Thank you for choosing me on your giveawy!"
-          ];
-          var randomIndex = Math.floor(Math.random() * messages.length);
-          return messages[randomIndex];
-        }
-      });
-    </script>
-    </div>
  <script>
   
   window.onhashchange=function(){jp();};
